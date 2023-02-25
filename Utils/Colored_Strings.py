@@ -62,26 +62,29 @@ IMAGE_RESIZED = \
 ###########################################################################################################################
 
 ALL_IMAGES_RESIZED = \
-    f'{CORRECT}\033[{SPECIAL["Bold"]};{COLORS["Green"]}m{"Successfully resized {images} images!"}\033[0;m'
+    f'\n{CORRECT}\033[{SPECIAL["Bold"]};{COLORS["Green"]}m{"Successfully resized "}\033[0;m'+\
+    f'\033[{COLORS["Green"]};{SPECIAL["Italics"]}m{"{images} "}\033[0;m'+\
+    f'\033[{COLORS["Green"]};{SPECIAL["Bold"]}m{"image(s)!"}\033[0;m'
 
 ###########################################################################################################################
 #####################################################     WARNING     #####################################################
 ###########################################################################################################################
 
-COULD_NOT_RESIZE_IMAGE = \
-    f'{WARN}\033[{SPECIAL["Bold"]};{COLORS["Yellow"]}m{"Could not resize image: "}\033[0;m'+\
-    f'\033[{COLORS["Yellow"]};{SPECIAL["Italics"]}m{"{name}"}\033[0;m'
 
-REPORT_SOME_IMAGES_NOT_RESIZED = \
-    f'{WARN}\033[{SPECIAL["Bold"]};{COLORS["Yellow"]}m{"Could not resize {images} images"}\033[0;m'
 
 ###########################################################################################################################
 ######################################################     ERROR     ######################################################
 ###########################################################################################################################
 
 NO_IMAGES_FOUND = \
-    f'{WARN}\033[{SPECIAL["Bold"]};{COLORS["Yellow"]}m{"Could not find any image in Original folder: "}\033[0;m'+\
-    f'\033[{COLORS["Yellow"]};{SPECIAL["Italics"]}m{"Check if the image formats are .png, jpg or jpeg..."}\033[0;m'
+    f"""{ERROR}\033[{SPECIAL["Bold"]};{COLORS["Red"]}m{"Could not find any image in '{folder}' folder: "}\033[0;m"""+\
+    f"""\033[{COLORS["Red"]};{SPECIAL["Italics"]}m{"Check if the image formats are '.png', '.jpg' or '.jpeg'..."}\033[0;m"""
+
+WRONG_FORMAT = \
+    f'{ERROR}\033[{SPECIAL["Bold"]};{COLORS["Red"]}m{"Constant(s) "}\033[0;m'+\
+    f'\033[{COLORS["Red"]};{SPECIAL["Italics"]}m{"{constant} "}\033[0;m'+\
+    f'\033[{COLORS["Red"]};{SPECIAL["Bold"]}m{"must be "}\033[0;m'+\
+    f'\033[{COLORS["Red"]};{SPECIAL["Italics"]}m{"{type}"}\033[0;m'
 
 ###########################################################################################################################
 #####################################################     PROGRAM     #####################################################

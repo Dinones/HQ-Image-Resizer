@@ -12,14 +12,24 @@ from Utils import Colored_Strings as COLOR_str
 #################################################     INITIALIZATIONS     #################################################
 ###########################################################################################################################
 
+# ↓↓ Checks the Constants format
+if type(CONST.DPI) != int or type(CONST.NEW_MAX_SIZE) != int: 
+    exit(print(COLOR_str.WRONG_FORMAT.replace('{constant}', 'DPI, NEW_MAX_SIZE').replace('{type}', 'integers')))
+
+# ↓↓ Checks if the necessary folders exist. If not, creates them
+if not os.path.exists(CONST.RESIZED_FOLDER_PATH): os.mkdir(CONST.RESIZED_FOLDER_PATH)
+if not os.path.exists(CONST.ORIGINAL_FOLDER_PATH): os.mkdir(CONST.ORIGINAL_FOLDER_PATH)
+
 NEW_PIXEL_SIZE = int(CONST.NEW_MAX_SIZE * CONST.DPI / 2.54)
 
 ###########################################################################################################################
 #####################################################     PROGRAM     #####################################################
 ###########################################################################################################################
 
-images = [element for element in os.listdir('./Original') if 
+images = [element for element in os.listdir(CONST.ORIGINAL_FOLDER_PATH) if 
     element.endswith('.jpg') or element.endswith('.png') or element.endswith('.jpeg')]
+
+if not images: exit(print(COLOR_str.NO_IMAGES_FOUND.replace('{folder}', CONST.ORIGINAL_FOLDER_PATH)))
 
 for image in images:
     img = Image.open(f'./Original/{image}')
@@ -41,4 +51,6 @@ for image in images:
     img_resized.info["dpi"] = CONST.DPI
     img_resized.save(f'./Resized/{image}')
 
-    print(COLOR_str.IMAGE_RESIZED.replace('{image_name}', 'image'))
+    print(COLOR_str.IMAGE_RESIZED.replace('{image_name}', image))
+
+print(COLOR_str.ALL_IMAGES_RESIZED.replace('{images}', str(len(images))))

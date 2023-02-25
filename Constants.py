@@ -6,3 +6,6 @@
 DPI = 300
 # ↓↓ In cm
 NEW_MAX_SIZE = 12
+# ↓↓ Format: Path/To/Original (Do not include / at the beggining or the end)
+ORIGINAL_FOLDER_PATH = 'Original'
+RESIZED_FOLDER_PATH = 'Resized'

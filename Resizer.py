@@ -46,10 +46,19 @@ for image in images:
     if max_size_index == 0: new_size = [NEW_PIXEL_SIZE, int(NEW_PIXEL_SIZE/aspect_ratio)]
     else: new_size = [int(NEW_PIXEL_SIZE*aspect_ratio), NEW_PIXEL_SIZE]
 
-    # ↓↓ Resizes and saves the image 
     img_resized = img.resize(new_size, Image.BICUBIC)
     img_resized.info["dpi"] = CONST.DPI
-    img_resized.save(f'./Resized/{image}')
+
+    if not CONST.OUTPUT_FORMAT:
+        img_resized.save(f'{CONST.RESIZED_FOLDER_PATH}/{image}')
+    else:
+        # ↓↓ Creates a blank image with the size of the resized one
+        pdf = Image.new("RGB", img_resized.size, (255, 255, 255))
+        # ↓↓ If image has transparent background, else will raise the except
+        try: pdf.paste(img_resized, (0, 0), img_resized)
+        except: pdf.paste(img_resized, (0, 0))
+        # ↓↓ Saves as '.pdf' keeping the resolution
+        pdf.save(f"{CONST.RESIZED_FOLDER_PATH}/{'.'.join(image.split('.')[:-1])}.pdf", "PDF", resolution = CONST.DPI)
 
     print(COLOR_str.IMAGE_RESIZED.replace('{image_name}', image))
 

@@ -53,9 +53,9 @@ ERROR = f'\033[{COLORS["Magenta"]}m[χ] \033[0;m'
 ######################################################     INFO     #######################################################
 ###########################################################################################################################
 
-RESIZING_IMAGE = \
-    f'{INFO}\033[{SPECIAL["Bold"]};{COLORS["Blue"]}m{"Resizing image: "}\033[0;m'+\
-    f'\033[{COLORS["Blue"]};{SPECIAL["Italics"]}m{"{name}"}\033[0;m'
+IMAGE_RESIZED = \
+    f'{INFO}\033[{SPECIAL["Bold"]};{COLORS["Blue"]}m{"Image Resized: "}\033[0;m'+\
+    f'\033[{COLORS["Blue"]};{SPECIAL["Italics"]}m{"{image_name}"}\033[0;m'
 
 ###########################################################################################################################
 #####################################################     CORRECT     #####################################################
@@ -80,8 +80,8 @@ REPORT_SOME_IMAGES_NOT_RESIZED = \
 ###########################################################################################################################
 
 NO_IMAGES_FOUND = \
-    f'{WARN}\033[{SPECIAL["Bold"]};{COLORS["Yellow"]}m{"""Could not find any image in 'Original/' folder: """}\033[0;m'+\
-    f'\033[{COLORS["Yellow"]};{SPECIAL["Italics"]}m{"""Check if the image formats are '.png', 'jpg' or 'jpeg'..."""}\033[0;m'
+    f'{WARN}\033[{SPECIAL["Bold"]};{COLORS["Yellow"]}m{"Could not find any image in Original folder: "}\033[0;m'+\
+    f'\033[{COLORS["Yellow"]};{SPECIAL["Italics"]}m{"Check if the image formats are .png, jpg or jpeg..."}\033[0;m'
 
 ###########################################################################################################################
 #####################################################     PROGRAM     #####################################################
